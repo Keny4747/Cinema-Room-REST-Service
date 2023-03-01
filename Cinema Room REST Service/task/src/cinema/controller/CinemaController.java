@@ -2,7 +2,9 @@ package cinema.controller;
 
 import cinema.model.Room;
 import cinema.model.Seat;
+import cinema.model.dto.SeatDTO;
 import cinema.service.RoomService;
+import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -19,7 +21,6 @@ public class CinemaController {
             for(int j=0; j<9; j++){
                 seats.add(new Seat(i+1,j+1));
             }
-
         }*/
         room.setAvailableSeats(service.findAll());
         room.setTotalColumns(9);
@@ -28,7 +29,9 @@ public class CinemaController {
     }
 
     @PostMapping("/purchase")
-    Seat purchase(@RequestBody Seat seat){
+    Seat purchase(@RequestBody SeatDTO seatDTO){
+
+       Seat seat = new ModelMapper().map(seatDTO,Seat.class);
         return service.purchaseSeat(seat);
     }
 

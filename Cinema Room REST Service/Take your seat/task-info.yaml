@@ -336,6 +336,9 @@ files:
 - name: src/cinema/service/RoomService.java
   visible: true
   learner_created: true
+- name: src/cinema/model/dto/SeatDTO.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/13376#comment
 status: Unchecked
 record: -1
