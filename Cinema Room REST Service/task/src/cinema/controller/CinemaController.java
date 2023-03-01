@@ -15,16 +15,10 @@ public class CinemaController {
     RoomService service = new RoomService();
     @GetMapping("/seats")
     Room getSeats(){
-        /*
-        List<Seat> seats= new ArrayList<>();
-        for(int i = 0; i<9; i++){
-            for(int j=0; j<9; j++){
-                seats.add(new Seat(i+1,j+1));
-            }
-        }*/
+
         room.setAvailableSeats(service.findAll());
-        room.setTotalColumns(9);
-        room.setTotalRows(9);
+        room.setTotalColumns(service.TOTALCOLUMNS);
+        room.setTotalRows(service.TOTALROWS);
         return room;
     }
 
