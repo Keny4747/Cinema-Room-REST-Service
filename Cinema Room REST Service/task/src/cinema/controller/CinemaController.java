@@ -24,11 +24,18 @@ public class CinemaController {
 
     @PostMapping("/purchase")
     Seat purchase(@RequestBody SeatDTO seatDTO){
-        if(seatDTO.getColumn()> service.TOTALCOLUMNS || seatDTO.getRow()>service.TOTALROWS){
+        Seat seat;
+        if(service.validateIndex(seatDTO)){
             throw new IndexOutOfBoundsException();
         }
-       Seat seat = new ModelMapper().map(seatDTO,Seat.class);
-        return service.purchaseSeat(seat);
+        if(service.findAvailableSeat(seatDTO)==null){
+            throw new RuntimeException();
+        }else{
+          seat = service.findAvailableSeat(seatDTO);
+            service.deleteSeat(seat);
+        }
+
+        return seat;
     }
 
 

@@ -1,6 +1,7 @@
 package cinema.service;
 
 import cinema.model.Seat;
+import cinema.model.dto.SeatDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ public class RoomService {
 
     public RoomService() {
         this.seats = new ArrayList<>();
+        initFillAvailableSeats();
     }
 
     public Seat purchaseSeat(Seat seat) {
@@ -20,14 +22,13 @@ public class RoomService {
     }
 
     public List<Seat> findAll() {
-        showSeats();
         return seats;
     }
-    public void findSeat(Integer row, Integer column){
-
+    public void deleteSeat(Seat seat){
+        seats.remove(seat);
     }
 
-    void showSeats() {
+    void initFillAvailableSeats() {
 
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
@@ -38,4 +39,17 @@ public class RoomService {
         }
     }
 
+    public Seat findAvailableSeat(SeatDTO seatDTO) {
+        return   seats.stream()
+                .filter(x -> x.getColumn().equals(seatDTO.getColumn()) && x.getRow().equals(seatDTO.getRow()))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public boolean validateIndex(SeatDTO seatDTO) {
+        return seatDTO.getColumn() > TOTALCOLUMNS
+                || seatDTO.getColumn() < 0
+                || seatDTO.getRow() > TOTALROWS
+                || seatDTO.getRow() < 0;
+    }
 }

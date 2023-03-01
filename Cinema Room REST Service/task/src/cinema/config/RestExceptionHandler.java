@@ -15,4 +15,11 @@ public class RestExceptionHandler {
                 .build();
         return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
     }
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<ErrorDTO> handlerSeatAvailableException(){
+        ErrorDTO error = ErrorDTO.builder()
+                .error("The ticket has been already purchased!")
+                .build();
+        return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
+    }
 }
