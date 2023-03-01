@@ -1,0 +1,36 @@
+buildscript {
+    ext {
+        // Define la versión de Spring Boot
+        springBootVersion = '2.6.2'
+        // Define la versión del plugin de administración de dependencias de Spring
+        springDependencyManagementVersion = '1.0.11.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        //classpath "org.springframework.boot:spring-boot-gradle-plugin:$hs.spring.bootVersion"
+       // classpath "io.spring.gradle:dependency-management-plugin:$hs.spring.dependencyManagementVersion"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        classpath "io.spring.gradle:dependency-management-plugin:${springDependencyManagementVersion}"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets.main.resources.srcDirs = ["src/resources"]
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+}
