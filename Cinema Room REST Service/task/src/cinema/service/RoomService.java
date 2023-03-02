@@ -16,10 +16,7 @@ public class RoomService {
         initFillAvailableSeats();
     }
 
-    public Seat purchaseSeat(Seat seat) {
-        seats.add(seat);
-        return seat;
-    }
+
 
     public List<Seat> findAll() {
         return seats;

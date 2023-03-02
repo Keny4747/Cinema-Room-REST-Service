@@ -297,6 +297,238 @@ files:
         };
     }
   learner_created: false
+- name: src/cinema/model/Seat.java
+  visible: true
+  text: |
+    package cinema.model;
+
+    import lombok.AllArgsConstructor;
+    import lombok.Data;
+    import lombok.NoArgsConstructor;
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public class Seat {
+        private Integer row;
+        private Integer Column;
+        private Integer price;
+
+    }
+  learner_created: true
+- name: src/cinema/model/Room.java
+  visible: true
+  text: |
+    package cinema.model;
+
+    import com.fasterxml.jackson.annotation.JsonProperty;
+
+    import java.util.List;
+
+    public class Room {
+        @JsonProperty("total_rows")
+        private Integer totalRows;
+
+        @JsonProperty("total_columns")
+        private Integer totalColumns;
+
+        @JsonProperty("available_seats")
+        private List<Seat> availableSeats;
+
+        public Room() {
+
+        }
+
+        public Integer getTotalRows() {
+            return totalRows;
+        }
+
+        public void setTotalRows(Integer totalRows) {
+            this.totalRows = totalRows;
+        }
+
+        public Integer getTotalColumns() {
+            return totalColumns;
+        }
+
+        public void setTotalColumns(Integer totalColumns) {
+            this.totalColumns = totalColumns;
+        }
+
+        public List<Seat> getAvailableSeats() {
+            return availableSeats;
+        }
+
+        public void setAvailableSeats(List<Seat> availableSeats) {
+            this.availableSeats = availableSeats;
+        }
+    }
+  learner_created: true
+- name: src/cinema/config/RestExceptionHandler.java
+  visible: true
+  text: |
+    package cinema.config;
+
+    import org.springframework.http.HttpStatus;
+    import org.springframework.http.ResponseEntity;
+    import org.springframework.web.bind.annotation.ExceptionHandler;
+    import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+    @RestControllerAdvice
+    public class RestExceptionHandler {
+
+        @ExceptionHandler(IndexOutOfBoundsException.class)
+        public ResponseEntity<ErrorDTO> handlerIndexOfBoundException(){
+            ErrorDTO error = ErrorDTO.builder()
+                    .error("The number of a row or a column is out of bounds!")
+                    .build();
+            return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
+        }
+        @ExceptionHandler(RuntimeException.class)
+        public ResponseEntity<ErrorDTO> handlerSeatAvailableException(){
+            ErrorDTO error = ErrorDTO.builder()
+                    .error("The ticket has been already purchased!")
+                    .build();
+            return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
+        }
+    }
+  learner_created: true
+- name: src/cinema/controller/CinemaController.java
+  visible: true
+  text: |
+    package cinema.controller;
+
+    import cinema.model.Room;
+    import cinema.model.Seat;
+    import cinema.model.dto.SeatDTO;
+    import cinema.service.RoomService;
+    import org.modelmapper.ModelMapper;
+    import org.springframework.web.bind.annotation.*;
+
+
+    @RestController
+    public class CinemaController {
+
+        Room room = new Room();
+        RoomService service = new RoomService();
+        @GetMapping("/seats")
+        Room getSeats(){
+
+            room.setAvailableSeats(service.findAll());
+            room.setTotalColumns(service.TOTALCOLUMNS);
+            room.setTotalRows(service.TOTALROWS);
+            return room;
+        }
+
+        @PostMapping("/purchase")
+        Seat purchase(@RequestBody SeatDTO seatDTO){
+            Seat seat;
+            if(service.validateIndex(seatDTO)){
+                throw new IndexOutOfBoundsException();
+            }
+            if(service.findAvailableSeat(seatDTO)==null){
+                throw new RuntimeException();
+            }else{
+              seat = service.findAvailableSeat(seatDTO);
+                service.deleteSeat(seat);
+            }
+
+            return seat;
+        }
+
+
+    }
+  learner_created: true
+- name: src/cinema/service/RoomService.java
+  visible: true
+  text: |
+    package cinema.service;
+
+    import cinema.model.Seat;
+    import cinema.model.dto.SeatDTO;
+
+    import java.util.ArrayList;
+    import java.util.List;
+
+    public class RoomService {
+        private final List<Seat> seats;
+        public final Integer TOTALCOLUMNS = 9;
+        public final Integer TOTALROWS = 9;
+
+        public RoomService() {
+            this.seats = new ArrayList<>();
+            initFillAvailableSeats();
+        }
+
+
+
+        public List<Seat> findAll() {
+            return seats;
+        }
+        public void deleteSeat(Seat seat){
+            seats.remove(seat);
+        }
+
+        void initFillAvailableSeats() {
+
+            for (int i = 0; i < 9; i++) {
+                for (int j = 0; j < 9; j++) {
+                    //<=3 porque estamos agregando el i+1
+                    Integer price = i <= 3 ? 10 : 8;
+                    this.seats.add(new Seat(i + 1, j + 1, price));
+                }
+            }
+        }
+
+        public Seat findAvailableSeat(SeatDTO seatDTO) {
+            return   seats.stream()
+                    .filter(x -> x.getColumn().equals(seatDTO.getColumn()) && x.getRow().equals(seatDTO.getRow()))
+                    .findFirst()
+                    .orElse(null);
+        }
+
+        public boolean validateIndex(SeatDTO seatDTO) {
+            return seatDTO.getColumn() > TOTALCOLUMNS
+                    || seatDTO.getColumn() < 0
+                    || seatDTO.getRow() > TOTALROWS
+                    || seatDTO.getRow() < 0;
+        }
+    }
+  learner_created: true
+- name: src/cinema/config/ErrorDTO.java
+  visible: true
+  text: |
+    package cinema.config;
+
+    import lombok.Builder;
+    import lombok.Data;
+
+    @Data
+    @Builder
+    public class ErrorDTO {
+        private String error;
+
+    }
+  learner_created: true
+- name: src/cinema/model/dto/SeatDTO.java
+  visible: true
+  text: |
+    package cinema.model.dto;
+
+    import lombok.Data;
+
+    @Data
+    public class SeatDTO {
+        private Integer row;
+        private Integer Column;
+    }
+  learner_created: true
+- name: src/cinema/model/Ticket.java
+  visible: true
+  learner_created: true
+- name: src/cinema/model/dto/Token.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/13377#comment
 status: Unchecked
 record: -1
