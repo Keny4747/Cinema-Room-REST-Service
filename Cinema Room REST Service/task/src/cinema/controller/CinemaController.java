@@ -1,10 +1,10 @@
 package cinema.controller;
 
-import cinema.model.Room;
-import cinema.model.Seat;
+import cinema.model.*;
 import cinema.model.dto.SeatDTO;
+import cinema.model.dto.TicketDTO;
 import cinema.service.RoomService;
-import org.modelmapper.ModelMapper;
+import cinema.service.TicketService;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -12,9 +12,17 @@ import org.springframework.web.bind.annotation.*;
 public class CinemaController {
 
     Room room = new Room();
-    RoomService service = new RoomService();
+
+    final RoomService service;
+    final TicketService ticketService;
+
+    public CinemaController(RoomService service, TicketService ticketService) {
+        this.service = service;
+        this.ticketService = ticketService;
+    }
+
     @GetMapping("/seats")
-    Room getSeats(){
+    Room getSeats() {
 
         room.setAvailableSeats(service.findAll());
         room.setTotalColumns(service.TOTALCOLUMNS);
@@ -23,20 +31,39 @@ public class CinemaController {
     }
 
     @PostMapping("/purchase")
-    Seat purchase(@RequestBody SeatDTO seatDTO){
+    Ticket purchase(@RequestBody SeatDTO seatDTO) {
         Seat seat;
-        if(service.validateIndex(seatDTO)){
+        Ticket ticket;
+        if (service.validateIndex(seatDTO)) {
             throw new IndexOutOfBoundsException();
         }
-        if(service.findAvailableSeat(seatDTO)==null){
+        if (service.findAvailableSeat(seatDTO) == null) {
             throw new RuntimeException();
-        }else{
-          seat = service.findAvailableSeat(seatDTO);
+        } else {
+            seat = service.findAvailableSeat(seatDTO);
+            ticket = ticketService.addticket(seat);
             service.deleteSeat(seat);
+
         }
 
-        return seat;
+        return ticket;
     }
 
+    @PostMapping("/return")
+    ReturnTicket returnTicket(@RequestBody Token token) {
+        Ticket ticket = ticketService.findTicket(token);
+
+        if (ticket == null) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+
+        TicketDTO ticketDTO = new TicketDTO();
+        ticketDTO.setPrice(ticket.getTicket().getPrice());
+        ticketDTO.setColumn(ticket.getTicket().getColumn());
+        ticketDTO.setRow(ticket.getTicket().getPrice());
+        ticketService.removeTicket(ticket);
+
+        return new ReturnTicket(ticketDTO);
+    }
 
 }

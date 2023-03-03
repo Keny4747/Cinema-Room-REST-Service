@@ -1,11 +1,13 @@
 package cinema.model;
 
-import cinema.model.dto.Token;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
+
 public class Ticket {
-    private Token token;
+    private String token;
     private Seat ticket;
 
 }

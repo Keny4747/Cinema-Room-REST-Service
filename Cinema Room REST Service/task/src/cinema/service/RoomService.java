@@ -2,10 +2,11 @@ package cinema.service;
 
 import cinema.model.Seat;
 import cinema.model.dto.SeatDTO;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Service
 public class RoomService {
     private final List<Seat> seats;
     public final Integer TOTALCOLUMNS = 9;
