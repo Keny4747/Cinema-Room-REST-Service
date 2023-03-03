@@ -2,6 +2,8 @@ package cinema.service;
 
 import cinema.model.Seat;
 import cinema.model.dto.SeatDTO;
+import cinema.model.dto.TicketDTO;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -24,6 +26,10 @@ public class RoomService {
     }
     public void deleteSeat(Seat seat){
         seats.remove(seat);
+    }
+    public void addSeat(TicketDTO ticketDTO){
+        Seat seat = new ModelMapper().map(ticketDTO,Seat.class);
+        seats.add(seat);
     }
 
     void initFillAvailableSeats() {

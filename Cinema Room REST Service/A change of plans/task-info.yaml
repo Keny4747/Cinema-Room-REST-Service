@@ -542,20 +542,8 @@ files:
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/learn/step/13377#comment
-status: Failed
+status: Solved
 feedback:
-  message: |-
-    Wrong answer in test #6
-
-    The JSON element at path &quot;/returned_ticket/row&quot; should equal to 2, found 10
-
-    Full JSON:
-    {
-      &quot;returned_ticket&quot;: {
-        &quot;row&quot;: 10,
-        &quot;column&quot;: 5,
-        &quot;price&quot;: 10
-      }
-    }
-  time: "Fri, 03 Mar 2023 17:10:16 UTC"
+  message: Congratulations!
+  time: "Fri, 03 Mar 2023 17:21:37 UTC"
 record: -1

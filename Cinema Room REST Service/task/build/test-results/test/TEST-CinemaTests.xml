@@ -1,67 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CinemaTests" tests="1" skipped="0" failures="1" errors="0" timestamp="2023-03-03T17:10:11" hostname="DESKTOP-AG8QKJE" time="4.359">
+<testsuite name="CinemaTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-03T17:21:34" hostname="DESKTOP-AG8QKJE" time="3.131">
   <properties/>
-  <testcase name="start" classname="CinemaTests" time="4.359">
-    <failure message="java.lang.AssertionError: Wrong answer in test #6&#10;&#10;The JSON element at path &quot;/returned_ticket/row&quot; should equal to 2, found 10&#10;&#10;Full JSON:&#10;{&#10;  &quot;returned_ticket&quot;: {&#10;    &quot;row&quot;: 10,&#10;    &quot;column&quot;: 5,&#10;    &quot;price&quot;: 10&#10;  }&#10;}" type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #6
-
-The JSON element at path &quot;/returned_ticket/row&quot; should equal to 2, found 10
-
-Full JSON:
-{
-  &quot;returned_ticket&quot;: {
-    &quot;row&quot;: 10,
-    &quot;column&quot;: 5,
-    &quot;price&quot;: 10
-  }
-}
-	at org.junit.Assert.fail(Assert.java:89)
-	at org.hyperskill.hstest.stage.StageTest.start(StageTest.java:203)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
-	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
-	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
-	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
-	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
-	at jdk.proxy1/jdk.proxy1.$Proxy2.processTestClass(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker$2.run(TestWorker.java:176)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60)
-	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
-	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:133)
-	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:71)
-	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
-	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
-</failure>
-  </testcase>
+  <testcase name="start" classname="CinemaTests" time="3.131"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
 ?[0;34m
@@ -73,19 +13,19 @@ Start test 1?[0m
 ?[0m?[0;34m =========|_|==============|___/=/_/_/_/
 ?[0m?[0;34m :: Spring Boot ::                (v2.6.2)
 ?[0m?[0;34m
-?[0m?[0;34m2023-03-03 12:10:12.811  INFO 12104 --- [    Test worker] cinema.Main                              : Starting Main using Java 17.0.4 on DESKTOP-AG8QKJE with PID 12104 (started by ASUS in D:\workspace-eclipse\Cinema Room REST Service\Cinema Room REST Service\task)
-?[0m?[0;34m2023-03-03 12:10:12.814  INFO 12104 --- [    Test worker] cinema.Main                              : No active profile set, falling back to default profiles: default
-?[0m?[0;34m2023-03-03 12:10:14.220  INFO 12104 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 28852 (http)
-?[0m?[0;34m2023-03-03 12:10:14.234  INFO 12104 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-?[0m?[0;34m2023-03-03 12:10:14.235  INFO 12104 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
-?[0m?[0;34m2023-03-03 12:10:14.335  INFO 12104 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-?[0m?[0;34m2023-03-03 12:10:14.335  INFO 12104 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1468 ms
-?[0m?[0;34m2023-03-03 12:10:14.967  INFO 12104 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
-?[0m?[0;34m2023-03-03 12:10:15.018  INFO 12104 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 28852 (http) with context path ''
-?[0m?[0;34m2023-03-03 12:10:15.030  INFO 12104 --- [    Test worker] cinema.Main                              : Started Main in 2.712 seconds (JVM running for 3.795)
-?[0;34m2023-03-03 12:10:15.811  INFO 12104 --- [io-28852-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-?[0m?[0;34m2023-03-03 12:10:15.811  INFO 12104 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-?[0m?[0;34m2023-03-03 12:10:15.813  INFO 12104 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+?[0m?[0;34m2023-03-03 12:21:34.663  INFO 13624 --- [    Test worker] cinema.Main                              : Starting Main using Java 17.0.4 on DESKTOP-AG8QKJE with PID 13624 (started by ASUS in D:\workspace-eclipse\Cinema Room REST Service\Cinema Room REST Service\task)
+?[0m?[0;34m2023-03-03 12:21:34.666  INFO 13624 --- [    Test worker] cinema.Main                              : No active profile set, falling back to default profiles: default
+?[0m?[0;34m2023-03-03 12:21:35.814  INFO 13624 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 28852 (http)
+?[0m?[0;34m2023-03-03 12:21:35.825  INFO 13624 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+?[0m?[0;34m2023-03-03 12:21:35.826  INFO 13624 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+?[0m?[0;34m2023-03-03 12:21:35.912  INFO 13624 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+?[0m?[0;34m2023-03-03 12:21:35.912  INFO 13624 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1198 ms
+?[0m?[0;34m2023-03-03 12:21:36.515  INFO 13624 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+?[0m?[0;34m2023-03-03 12:21:36.550  INFO 13624 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 28852 (http) with context path ''
+?[0m?[0;34m2023-03-03 12:21:36.565  INFO 13624 --- [    Test worker] cinema.Main                              : Started Main in 2.25 seconds (JVM running for 2.962)
+?[0;34m2023-03-03 12:21:36.868  INFO 13624 --- [io-28852-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+?[0m?[0;34m2023-03-03 12:21:36.868  INFO 13624 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+?[0m?[0;34m2023-03-03 12:21:36.869  INFO 13624 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
 ?[0m?[1;31m
 Start test 2?[0m
 ?[1;31m

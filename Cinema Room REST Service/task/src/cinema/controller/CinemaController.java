@@ -60,8 +60,9 @@ public class CinemaController {
         TicketDTO ticketDTO = new TicketDTO();
         ticketDTO.setPrice(ticket.getTicket().getPrice());
         ticketDTO.setColumn(ticket.getTicket().getColumn());
-        ticketDTO.setRow(ticket.getTicket().getPrice());
+        ticketDTO.setRow(ticket.getTicket().getRow());
         ticketService.removeTicket(ticket);
+        service.addSeat(ticketDTO);
 
         return new ReturnTicket(ticketDTO);
     }
