@@ -6,19 +6,17 @@ import cinema.model.dto.TicketDTO;
 import cinema.service.RoomService;
 import cinema.service.TicketService;
 import org.springframework.web.bind.annotation.*;
-
-
 @RestController
 public class CinemaController {
 
-    Room room = new Room();
-
+    Room room;
     final RoomService service;
     final TicketService ticketService;
 
-    public CinemaController(RoomService service, TicketService ticketService) {
+    public CinemaController(RoomService service, TicketService ticketService,Room room) {
         this.service = service;
         this.ticketService = ticketService;
+        this.room = room;
     }
 
     @GetMapping("/seats")
