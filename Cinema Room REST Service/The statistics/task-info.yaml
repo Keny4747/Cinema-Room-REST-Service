@@ -787,6 +787,9 @@ files:
 - name: src/cinema/model/Statics.java
   visible: true
   learner_created: true
+- name: src/cinema/service/StaticService.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/13378#comment
 status: Unchecked
 record: -1

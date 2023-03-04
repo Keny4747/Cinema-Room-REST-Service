@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Statics {
-    
+
     @JsonProperty("current_income")
     private Integer currentIncome;
 
