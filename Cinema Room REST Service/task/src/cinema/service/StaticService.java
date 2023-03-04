@@ -15,8 +15,9 @@ public class StaticService {
         this.statics = statics;
         this.roomService = roomService;
         this.ticketService = ticketService;
-        this.initSeats = roomService.findAll();
+        this.initSeats = roomService.initFillAvailableSeats();
     }
+
 
     public void processData(){
         currentIncome();
@@ -33,7 +34,7 @@ public class StaticService {
                 .mapToInt(Seat::getPrice)
                 .sum();
 
-        this.statics.setCurrentIncome(ticketAvailable-soldTickets);
+        this.statics.setCurrentIncome(soldTickets-ticketAvailable);
     }
     public void numberAvailableSeats(){
      this.statics.setAvailableSeats( roomService.findAll().size());
@@ -45,4 +46,5 @@ public class StaticService {
         processData();
         return  statics;
     }
+
 }

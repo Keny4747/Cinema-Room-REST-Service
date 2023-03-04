@@ -15,8 +15,7 @@ public class RoomService {
     public final Integer TOTALROWS = 9;
 
     public RoomService() {
-        this.seats = new ArrayList<>();
-        initFillAvailableSeats();
+        this.seats =initFillAvailableSeats();
     }
 
 
@@ -32,15 +31,16 @@ public class RoomService {
         seats.add(seat);
     }
 
-    void initFillAvailableSeats() {
-
+    List<Seat> initFillAvailableSeats() {
+        List<Seat> list = new ArrayList<>();
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 //<=3 porque estamos agregando el i+1
                 Integer price = i <= 3 ? 10 : 8;
-                this.seats.add(new Seat(i + 1, j + 1, price));
+                list.add(new Seat(i + 1, j + 1, price));
             }
         }
+        return list;
     }
 
     public Seat findAvailableSeat(SeatDTO seatDTO) {

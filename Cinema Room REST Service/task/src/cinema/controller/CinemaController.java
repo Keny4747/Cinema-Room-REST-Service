@@ -66,8 +66,13 @@ public class CinemaController {
         return new ReturnTicket(ticketDTO);
     }
 
-    @GetMapping("/stats")
-    Statics getStatics(){
+    @PostMapping("/stats")
+    Statics getStatics(@RequestParam(value = "password", required = false)  String password){
+        if(!password.equals("super_secret")){
+            throw new IllegalArgumentException();
+
+        }
+
         return staticService.getStatics();
     }
 }

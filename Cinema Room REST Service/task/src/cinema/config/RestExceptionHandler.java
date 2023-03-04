@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.io.NotActiveException;
+
 
 @RestControllerAdvice
 public class RestExceptionHandler {
@@ -30,5 +30,12 @@ public class RestExceptionHandler {
                 .error("Wrong token!")
                 .build();
         return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ErrorDTO> handlerWrongPassword(){
+        ErrorDTO error = ErrorDTO.builder()
+                .error("The password is wrong!")
+                .build();
+        return new ResponseEntity<>(error,HttpStatus.UNAUTHORIZED);
     }
 }
