@@ -4,6 +4,7 @@ import cinema.model.*;
 import cinema.model.dto.SeatDTO;
 import cinema.model.dto.TicketDTO;
 import cinema.service.RoomService;
+import cinema.service.StaticService;
 import cinema.service.TicketService;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
@@ -13,11 +14,13 @@ public class CinemaController {
     Room room;
     final RoomService service;
     final TicketService ticketService;
+    final StaticService staticService;
 
-    public CinemaController(RoomService service, TicketService ticketService,Room room) {
+    public CinemaController(RoomService service, TicketService ticketService,Room room,StaticService staticService) {
         this.service = service;
         this.ticketService = ticketService;
         this.room = room;
+        this.staticService = staticService;
     }
 
     @GetMapping("/seats")
@@ -63,4 +66,8 @@ public class CinemaController {
         return new ReturnTicket(ticketDTO);
     }
 
+    @GetMapping("/stats")
+    Statics getStatics(){
+        return staticService.getStatics();
+    }
 }

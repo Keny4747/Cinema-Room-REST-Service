@@ -34,6 +34,9 @@ public class TicketService {
     public void removeTicket(Ticket ticket){
         tickets.remove(ticket);
     }
+    public List<Ticket> findAll(){
+        return tickets;
+    }
 
     public String generateUUID() {
         return UUID.randomUUID().toString();
