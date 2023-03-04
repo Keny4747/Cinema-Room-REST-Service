@@ -791,15 +791,9 @@ files:
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/learn/step/13378#comment
-status: Failed
+status: Solved
 feedback:
-  message: |-
-    Wrong answer in test #7
-
-    POST /stats should respond with status code 401, responded: 400
-
-    Response body:
-
-    {&quot;error&quot;:&quot;The ticket has been already purchased!&quot;}
-  time: "Sat, 04 Mar 2023 17:11:58 UTC"
+  message: Well done! You've finished the project. Select a new project on <a href="https://hyperskill.org/projects">JetBrains
+    Academy</a> to continue learning.
+  time: "Sat, 04 Mar 2023 23:51:34 UTC"
 record: -1

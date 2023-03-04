@@ -1,5 +1,6 @@
 package cinema.controller;
 
+import cinema.config.ErrorDTO;
 import cinema.model.*;
 import cinema.model.dto.SeatDTO;
 import cinema.model.dto.TicketDTO;
@@ -7,7 +8,10 @@ import cinema.service.RoomService;
 import cinema.service.StaticService;
 import cinema.service.TicketService;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
 @RestController
 public class CinemaController {
 
@@ -40,7 +44,7 @@ public class CinemaController {
             throw new IndexOutOfBoundsException();
         }
         if (service.findAvailableSeat(seatDTO) == null) {
-            throw new RuntimeException();
+            throw new IllegalArgumentException();
         } else {
             seat = service.findAvailableSeat(seatDTO);
             ticket = ticketService.addticket(seat);
@@ -67,12 +71,10 @@ public class CinemaController {
     }
 
     @PostMapping("/stats")
-    Statics getStatics(@RequestParam(value = "password", required = false)  String password){
-        if(!password.equals("super_secret")){
-            throw new IllegalArgumentException();
-
+    Object getStatics(@RequestParam(value = "password", required = false)  String password){
+        if (!"super_secret".equals(password)) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
         }
-
         return staticService.getStatics();
     }
 }

@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
+import org.springframework.web.server.ResponseStatusException;
 
 
 @RestControllerAdvice
@@ -17,7 +17,7 @@ public class RestExceptionHandler {
                 .build();
         return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
     }
-    @ExceptionHandler(RuntimeException.class)
+    @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ErrorDTO> handlerSeatAvailableException(){
         ErrorDTO error = ErrorDTO.builder()
                 .error("The ticket has been already purchased!")
@@ -31,7 +31,7 @@ public class RestExceptionHandler {
                 .build();
         return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
     }
-    @ExceptionHandler(IllegalArgumentException.class)
+    @ExceptionHandler(ResponseStatusException.class)
     public ResponseEntity<ErrorDTO> handlerWrongPassword(){
         ErrorDTO error = ErrorDTO.builder()
                 .error("The password is wrong!")
