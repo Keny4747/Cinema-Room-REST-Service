@@ -5,6 +5,7 @@ import cinema.model.dto.SeatDTO;
 import cinema.model.dto.TicketDTO;
 import cinema.service.RoomService;
 import cinema.service.TicketService;
+import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
 @RestController
 public class CinemaController {
@@ -55,10 +56,7 @@ public class CinemaController {
             throw new ArrayIndexOutOfBoundsException();
         }
 
-        TicketDTO ticketDTO = new TicketDTO();
-        ticketDTO.setPrice(ticket.getTicket().getPrice());
-        ticketDTO.setColumn(ticket.getTicket().getColumn());
-        ticketDTO.setRow(ticket.getTicket().getRow());
+        TicketDTO ticketDTO = new ModelMapper().map(ticket.getTicket(),TicketDTO.class);
         ticketService.removeTicket(ticket);
         service.addSeat(ticketDTO);
 
